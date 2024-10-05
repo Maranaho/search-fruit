@@ -42,6 +42,7 @@ const fillTheULWithFruits = searchValue =>{
         liElt.innerText = fruit
         fruitList.appendChild(liElt)
     })
+
 }
 
 const handleSubmit = ()=>{
@@ -66,19 +67,20 @@ const handleKeyup = event =>{
     
     //Checking if the key is Enter or Return
     if(event.key === "Enter") handleSubmit()
+    else chosenFruit.innerText = ""
         
-    }
+}
     
     
-    // Event listeners
-    searchInput.addEventListener("keyup",handleKeyup)
-    submitBtn.addEventListener("click",handleSubmit)
-    
-    
-    // Order of operations
-    const init = ()=>{
-        // fill the UL with all the fruits
-        fillTheULWithFruits("")
+// Event listeners
+searchInput.addEventListener("keyup",handleKeyup)
+submitBtn.addEventListener("click",handleSubmit)
+
+
+// Order of operations
+const init = ()=>  {
+    // fill the UL with all the fruits
+    fillTheULWithFruits("")
 }
 
 // Initialize the app
