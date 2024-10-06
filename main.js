@@ -22,21 +22,26 @@ const fruitsArr = [
     "Cantaloupe"
   ];
 
+
 // Select DOM elements
 const searchInput = document.getElementById("searchInput")
 const submitBtn = document.getElementById("submitBtn")
 const fruitList = document.getElementById("fruitList")
+const chosenFruit = document.getElementById("chosenFruit")
 
 //Define some variables
 const maxLength = 5
+let filteredArr
 
 // functions
 const fillTheULWithFruits = searchValue =>{    
     
-    fruitsArr
+    filteredArr = fruitsArr
     .filter(fruit => fruit.toLowerCase().includes(searchValue.toLowerCase()))
     .slice(0,maxLength)
-    .forEach(fruit =>{
+
+
+    filteredArr.forEach(fruit =>{
         // create a LI elt
         const liElt = document.createElement("li")
         liElt.innerText = fruit
@@ -51,6 +56,9 @@ const handleSubmit = ()=>{
 
     //Hide the fruits
     fruitList.classList.add("hide")
+
+    //Update chosen fruit
+    chosenFruit.innerText = filteredArr[0]
 }
 
 
