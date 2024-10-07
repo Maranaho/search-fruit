@@ -26,6 +26,7 @@ const fruitsArr = [
 const searchInput = document.getElementById("searchInput")
 const submitBtn = document.getElementById("submitBtn")
 const fruitList = document.getElementById("fruitList")
+const selectedFruitElt = document.getElementById("selectedFruit")
 
 //Define some variables
 const maxLength = 5
@@ -67,14 +68,23 @@ const handleKeyup = event =>{
     
     //Checking if the key is Enter or Return
     if(event.key === "Enter") handleSubmit()
-    else chosenFruit.innerText = ""
         
 }
+
+const handleFruitClick = e =>{
+    handleSubmit()
+    const selectedFruit = e.target.innerText
+    selectedFruitElt.innerText = `So you like ${selectedFruit}? Yuk!`
+}
+
+const handleFieldFocus = ()=> selectedFruitElt.innerText = ""
     
     
 // Event listeners
 searchInput.addEventListener("keyup",handleKeyup)
+searchInput.addEventListener("focus",handleFieldFocus)
 submitBtn.addEventListener("click",handleSubmit)
+fruitList.addEventListener("click",handleFruitClick)
 
 
 // Order of operations
